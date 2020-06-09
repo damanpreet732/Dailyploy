@@ -1,0 +1,46 @@
+import java.util.* ;
+class LinkedList 
+{ 
+    static Node head;
+    class Node 
+    { 
+        int data; 
+        Node next; 
+        Node(int d) 
+        { 
+            data = d; 
+            next = null; 
+        } 
+    } 
+    public void add(int data) 
+    { 
+        Node node = new Node(data); 
+        node.next = head; 
+        head = node; 
+    } 
+    static void middle() 
+    { 
+        Node slow = head,fast = head; 
+        if (head != null) 
+        { 
+            while (fast != null && fast.next != null) 
+            { 
+                fast = fast.next.next; 
+                slow = slow.next; 
+            } 
+            System.out.println("The middle element is : "+slow.data); 
+        } 
+    }  
+    public static void main(String [] args) 
+    { 
+        Scanner input = new Scanner (System.in);
+        System.out.println("Enter number of elements you wana have in LinkedList :");
+        int n = input.nextInt();
+        LinkedList ll = new LinkedList(); 
+        for(int i=0;i<n;i++)
+        {
+            ll.add(input.nextInt());
+        }
+        middle();
+    } 
+} 
